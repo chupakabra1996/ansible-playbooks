@@ -1,0 +1,4 @@
+---
+
+ros_user: 'vagrant'
+ros_group: 'vagrant'

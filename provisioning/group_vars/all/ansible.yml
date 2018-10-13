@@ -1,0 +1,7 @@
+---
+
+# See https://stackoverflow.com/questions/22769568/system-specific-variables-in-ansible
+# and https://gist.github.com/gwillem/4ba393dceb55e5ae276a87300f6b8e6f
+# 
+# Fix issue with python not found in Ubuntu 16.04
+ansible_python_interpreter: '/usr/bin/python3'
