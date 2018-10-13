@@ -74,12 +74,12 @@ Vagrant.configure("2") do |config|
   end
 
   # VM instance
-  config.vm.define "Ubuntu 16.04 (ROS Kinetic)" do |host|
+  config.vm.define "ros_kinetic" do |host|
 
     host.vm.hostname = "ros-kinetic"
     
     host.vm.provider :virtualbox do |vb|
-          vb.name = "xenial64-instance"
+          vb.name = "Ubuntu Xenial (ROS Kinetic) x64"
     end
 
     host.vm.network :forwarded_port, guest: 22, host: 20022, id: "ssh"
