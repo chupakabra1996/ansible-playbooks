@@ -1,0 +1,50 @@
+---
+
+- name: add ROS repository into sources list
+  apt_repository:
+    repo: 'deb {{ ros_installation_ros_repository }} {{ ansible_lsb.codename }} main'
+    state: present
+
+- name: add ROS repository key by id from a keyserver
+  apt_key:
+    keyserver: '{{ ros_installation_ros_keyserver }}'
+    id: '{{ ros_installation_ros_keyid }}'
+
+- name: update apt cache for ROS installation
+  apt:
+    update_cache: yes
+
+- name: install ROS package
+  apt:
+    name: 'ros-{{ ros_installation_ros_release }}-{{ ros_installation_ros_package }}'
+    state: latest
+
+- name: check if rosdep is initialized
+  stat:
+    path: /etc/ros/rosdep/sources.list.d/20-default.list
+  register: rosdep_repository
+
+- name: initialize rosdep
+  raw: sudo rosdep init
+  when: rosdep_repository.stat.exists == false
+
+- name: update rosdep
+  become: yes
+  become_user: '{{ ros_user }}'
+  raw: rosdep update
+
+- name: install dependencies for building ROS packages
+  apt:
+    name:
+      - python-rosinstall
+      - python-rosinstall-generator
+      - python-wstool
+      - build-essential
+      - python-catkin-tools
+    state: present
+  when: ros_installation_install_dependencies
+
+- name: put the ROS setup script in bashrc
+  lineinfile:
+    path: '{{ ros_installation_setup_shell_file_path }}'
+    line: 'source /opt/ros/kinetic/setup.bash'

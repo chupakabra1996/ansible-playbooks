@@ -1,0 +1,27 @@
+---
+
+- name: check SublimeText existence
+  shell: "subl -v"
+  register: sublime_text_version
+  ignore_errors: true  # sublime_text_version.stdout is empty in case of error
+
+- block:
+  # https://stackoverflow.com/questions/46835369/ansible-to-install-sublime-text-editor-in-linux
+  - name: install GPG key for SublimeText 3
+    apt_key:
+      url: https://download.sublimetext.com/sublimehq-pub.gpg
+      state: present
+
+  - name: add SublimeText 3 apt repository
+    apt_repository:
+      repo: deb https://download.sublimetext.com/ apt/stable/
+      state: present
+      filename: sublime-text
+      update_cache: yes
+  
+  - name: install SublimeText 3
+    apt:
+      name: sublime-text
+      state: present
+
+  when: apt_install_sublime_text and sublime_text_version.stdout == ""

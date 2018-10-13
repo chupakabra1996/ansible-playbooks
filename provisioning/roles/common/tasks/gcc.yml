@@ -1,0 +1,37 @@
+---
+
+- name: check gcc version
+  shell: "gcc --version | grep ^gcc | sed 's/^.* //g'"
+  register: gcc_version
+  ignore_errors: true  # gcc_version.stdout is empty in case of error
+
+- block:
+  - name: add ubuntu-toolchains/test ppa for gcc installation
+    apt_repository: 
+      repo: 'ppa:ubuntu-toolchain-r/test'
+      state: present
+      update_cache: yes
+
+  - name: install gcc/g++
+    apt:
+      name:
+        - 'gcc-{{ apt_install_gcc_version }}'
+        - 'g++-{{ apt_install_gcc_version }}'
+      state: present
+
+  - name: remove ubuntu-toolchains/test repository
+    apt_repository: 
+      repo: 'ppa:ubuntu-toolchain-r/test'
+      state: absent
+
+  - name: update-alternatives for gcc/g++
+    raw: |
+      sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-{{ apt_install_gcc_version }}  60 \
+      --slave /usr/bin/g++ g++ /usr/bin/g++-{{ apt_install_gcc_version }} \
+      --slave /usr/bin/gcc-ar gcc-ar /usr/bin/gcc-ar-{{ apt_install_gcc_version }} \
+      --slave /usr/bin/gcc-nm gcc-nm /usr/bin/gcc-nm-{{ apt_install_gcc_version }} \
+      --slave /usr/bin/gcc-ranlib gcc-ranlib /usr/bin/gcc-ranlib-{{ apt_install_gcc_version }} \
+      && sudo update-alternatives --config gcc
+
+  # gcc is not installed (empty stdout) and existing gcc version != to the apt_install_gcc_version
+  when: apt_install_gcc and (gcc_version.stdout == "" or (gcc_version.stdout[0] !=  apt_install_gcc_version | string))

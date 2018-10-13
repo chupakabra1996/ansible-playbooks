@@ -1,0 +1,8 @@
+---
+
+apt_initial_upgrade_packages: false
+
+apt_install_gcc: true
+apt_install_gcc_version: 8
+
+apt_install_sublime_text: true

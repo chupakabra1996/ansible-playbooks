@@ -1,1 +1,8 @@
 .DS_Store
+
+# Vagrant
+.vagrant
+*.log
+
+# ansible
+*.retry

@@ -1,0 +1,11 @@
+---
+
+# https://stackoverflow.com/questions/37333305/ansible-create-a-user-with-sudo-privileges
+
+- hosts: ros_kinetic
+  remote_user: '{{ ros_user }}'
+  become: yes
+  become_method: sudo
+  roles:
+    - common
+    # - ros
