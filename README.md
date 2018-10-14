@@ -1,13 +1,33 @@
 # ansible-ros-kinetic-playbook
 
-ROS Kinetic installation playbook for Ubuntu 16.04 (Xenial).
+ROS Kinetic installation playbook for Ubuntu 16.04 (Xenial) hosts.
 
 ## Prerequisites
 
-To try this project you need (on your host):
-- Vagrant
+To run the project you need (on your host machine):
+- [`optional`] Vagrant
 - Ansible (ver. 2+)
-- Virtualbox
+- [`optional`] Virtualbox
+- SSH connection with the remote host (Ubuntu 16.04 Linux)
+
+## Installaition
+
+### Mac OS X
+
+- Vagrant:
+```shell
+brew cask install vagrant
+```
+
+- Virtualbox:
+```shell
+brew cask install virtualbox
+```
+
+- Ansible:
+```shell
+brew install ansible
+```
 
 ## Usage
 
@@ -16,14 +36,13 @@ To try this project you need (on your host):
 vagrant up  # from the folder with Vagrantfile
 ```
 
-- Provisioning the VM with ansible (using `vagrant`):
+- Provision the VM with `ansible` (using `vagrant`):
 ```shell
 vagrant provision  # or vagrant up --provision
 ```
 
-- Run the playbook on the remote host (without vagrant):
+- Provision the VM or other host without `vagrant`:
 ```shell
 ansible-playbook -i <inventory> provisioning/playbook.yml
 ```
 See more on how to run playbooks with various parameters on ansible's [user guide](https://docs.ansible.com/ansible/2.5/user_guide/index.html).
-
