@@ -14,21 +14,16 @@ To run the project you need (on your host machine):
 
 ### Installaition
 
-#### On Mac OS X
+#### Ansible:
 
-- Vagrant:
-```shell
-brew cask install vagrant
-```
-
-- Virtualbox:
-```shell
-brew cask install virtualbox
-```
-
-- Ansible:
+- Mac OS X:
 ```shell
 brew install ansible
+```
+- Ubuntu 16.04:
+```shell
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get install ansible
 ```
 
 ### Usage examples
