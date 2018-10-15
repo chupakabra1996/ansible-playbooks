@@ -1,3 +1,10 @@
 ---
 
-# define your vars here
+# Define your vars here ...
+# 
+# For example:
+# 
+# apt_initial_upgrade_packages: true
+# apt_install_gcc_version: 7
+# 
+# ...

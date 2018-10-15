@@ -1,7 +1,5 @@
 ---
 
-# https://stackoverflow.com/questions/37333305/ansible-create-a-user-with-sudo-privileges
-
 - hosts: all
   remote_user: '{{ ros_user }}'
   become: yes
