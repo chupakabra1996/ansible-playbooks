@@ -42,6 +42,11 @@ vagrant provision  # or vagrant up --provision
 ```shell
 ansible-playbook -i <inventory> provisioning/playbook.yml
 ```
+- Provision localhost:
+```shell
+ANSIBLE_CONFIG=.ansible.cfg ansible-playbook --extra-vars "ros_user=<specify the user>" -K playbook.yml
+```
+
 See more on how to run playbooks with various parameters on ansible's [user guide](https://docs.ansible.com/ansible/2.5/user_guide/index.html).
 
 ## Roles
