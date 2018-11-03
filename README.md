@@ -45,7 +45,7 @@ ANSIBLE_CONFIG=.ansible.cfg ansible-playbook --extra-vars "ros_user=<specify the
 ```
 Specify the user with sudo privileges. 
 
-See more on how to run playbooks with various parameters on ansible's [user guide](https://docs.ansible.com/ansible/2.5/user_guide/index.html).
+See more on how to run playbooks with various parameters in ansible's [user guide](https://docs.ansible.com/ansible/2.5/user_guide/index.html).
 
 ## Roles
 
