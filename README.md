@@ -37,7 +37,7 @@ vagrant up --provision # from the folder with Vagrantfile
 ```shell
 ansible-playbook -i <inventory> provisioning/playbook.yml
 ```
-Where `<inventory>` is a file containing hosts to provision (see [hosts](provisioning/hosts) as an example)
+Where `<inventory>` is a file that contains hosts to provision (see [hosts](provisioning/hosts) as an example)
 
 - Provision localhost:
 ```shell
