@@ -51,8 +51,8 @@ See more on how to run playbooks with various parameters in ansible's [user guid
 
 - _common_:
   - Update and upgrade apt packages;
-  - Install gcc and g++ from ubuntu-toolchains/test;
+  - Install GCC (both gcc and g++) from _ubuntu-toolchains/test_;
   - SublimeText installation.
 - _ros_:
-  - ROS Kinetic installation (desktop-full, ros-base, etc.);
+  - ROS Kinetic installation (_desktop-full_, _ros-base_, etc.);
   - Post-installation environment setup.
