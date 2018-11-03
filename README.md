@@ -28,24 +28,22 @@ sudo apt-get install ansible
 
 ### Usage examples
 
-- Start the virtual machine (VM):
+- Provision the VM (using `vagrant`):
 ```shell
-vagrant up  # from the folder with Vagrantfile
+vagrant up --provision # from the folder with Vagrantfile
 ```
 
-- Provision the VM with `ansible` (using `vagrant`):
-```shell
-vagrant provision  # or vagrant up --provision
-```
-
-- Provision the VM or other host without `vagrant`:
+- Provision the VM or other host (directly with `ansible`):
 ```shell
 ansible-playbook -i <inventory> provisioning/playbook.yml
 ```
+Where `<inventory>` is a file containing hosts to provision (see [hosts](provisioning/hosts) as an example)
+
 - Provision localhost:
 ```shell
 ANSIBLE_CONFIG=.ansible.cfg ansible-playbook --extra-vars "ros_user=<specify the user>" -K playbook.yml
 ```
+Specify the user with sudo privileges. 
 
 See more on how to run playbooks with various parameters on ansible's [user guide](https://docs.ansible.com/ansible/2.5/user_guide/index.html).
 
