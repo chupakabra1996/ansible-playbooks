@@ -43,8 +43,9 @@ Where `<inventory>` is a file that contains hosts to provision (see [hosts](prov
 ```shell
 ANSIBLE_CONFIG=.ansible.cfg ansible-playbook --extra-vars "ros_user=<specify the user>" -K playbook.yml
 ```
-Specify the user with sudo privileges. 
+Specify a user with sudo privileges.
 
+---
 See more on how to run playbooks with various parameters in ansible's [user guide](https://docs.ansible.com/ansible/2.5/user_guide/index.html).
 
 ## Roles
@@ -53,6 +54,7 @@ See more on how to run playbooks with various parameters in ansible's [user guid
   - Update and upgrade apt packages;
   - Install GCC (both gcc and g++) from _ubuntu-toolchains/test_;
   - SublimeText installation.
+  
 - _ros_:
   - ROS Kinetic installation (_desktop-full_, _ros-base_, etc.);
   - Post-installation environment setup.
