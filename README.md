@@ -41,7 +41,7 @@ Where `<inventory>` is a file that contains hosts to provision (see [hosts](prov
 
 - Provision localhost:
 ```shell
-ANSIBLE_CONFIG=.ansible.cfg ansible-playbook --extra-vars "ros_user=<specify the user>" -K playbook.yml
+ANSIBLE_CONFIG=.ansible.cfg ansible-playbook --extra-vars "ros_user=<specify the user>" -K provisioning/playbook.yml
 ```
 Specify a user with sudo privileges.
 
